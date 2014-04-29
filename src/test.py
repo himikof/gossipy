@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-from gossipy.gossip import Gossiper, _address_to_peer_name, Participant as _Participant
-import random
+from gossipy.gossip import Gossiper, Participant as _Participant
 import logging
 import asyncio
 
@@ -45,7 +44,7 @@ class Participant(_Participant):
                 #print "key error in vote"
                 return
             #print "got consensus on votes"
-            vote = self.gossiper.set('/leader-election/master', vote)
+            self.gossiper.set('/leader-election/master', vote)
         elif key == '/leader-election/master':
             try:
                 vote = self.gossiper.get('/leader-election/master')
