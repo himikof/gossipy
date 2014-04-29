@@ -111,8 +111,8 @@ class PeerState(MutableMapping):
             return False
 
     def mark_alive(self):
-        alive, self.alive = self.alive, True
-        if not alive:
+        was_alive, self.alive = self.alive, True
+        if not was_alive:
             self.participant.peer_alive(self)
 
     def mark_dead(self):
